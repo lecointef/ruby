@@ -11,3 +11,9 @@ person_1 = Person.new
 person_1.name = "Léa"
 person_1.age = 20
 person_1.outfit = ["Green sweat", "blue jeans", "blue sockets"]
+
+greeting = "Welcome back, #{person_1.name}! Hope you're doing well."
+greeting.upcase
+greeting.upcase!
+greeting.downcase!
+greeting.capitalize!
