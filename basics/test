@@ -1,0 +1,13 @@
+class Person
+  attr_accessor :name, :age, :outfit
+
+  def sayHello
+      puts @name + " says hello !"
+  end
+end
+
+
+person_1 = Person.new
+person_1.name = "Léa"
+person_1.age = 20
+person_1.outfit = ["Green sweat", "blue jeans", "blue sockets"]
