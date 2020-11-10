@@ -18,6 +18,11 @@
     <%= form.label :body %>
     <%= form.text_field :body, id: "post_body" %>
 
+    <p>
+      <%= form.label :photo %>
+      <%= form.file_field :photo, id: "post_photo" %>
+    </p>
+
     <%= form.submit %>
   </div>
 <% end %>
