@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_author, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -70,5 +72,9 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.fetch(:post, {}).permit(:title, :body, :photo)
+    end
+
+    def require_author
+        redirect_to(homepage_home_url) unless current_user == @post.user
     end
 end
