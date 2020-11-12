@@ -7,7 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Author</th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -21,6 +21,18 @@
           <% else %>
             <p><%= post.user.name %>
           <% end %>
+          <td>
+            <p>
+              <%= pluralize(post.likes.count,'Like')%>
+              <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+              <% if pre_like %>
+                <%= link_to image_tag(image_url('fav_icon.svg')), post_like_path(post, pre_like), class: 'vote', method: :delete %>
+              <% else %>
+                <%= link_to image_tag(image_url('not_yet_fav_icon.svg')), post_likes_path(post), class: 'vote', method: :post %>
+              <% end %>
+
+            </p>
+          </td>
         <td>
           <% if post.user == current_user %>
             <%= link_to 'Edit', edit_post_path(post) %>

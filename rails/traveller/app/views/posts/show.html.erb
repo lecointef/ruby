@@ -9,6 +9,8 @@
 <% end %>
 <p><%= @post.body %></p>
 
+<p><%= pluralize(@post.likes.count,'Like')%></p>
+
 <% if @post.user == current_user %>
   <%= link_to 'Edit', edit_post_path(@post) %>
 <% end %>
